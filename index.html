@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>املای خلاق | ماجراجویی علیه میکروب‌ها</title>
+<style>
+:root{--c:#00f0ff;--m:#ff2bd6;--l:#a6ff00;--y:#ffe600;--o:#ff7a00;--bg:#070722;color-scheme:dark;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+*{box-sizing:border-box}
+html,body{margin:0;min-height:100%;background:var(--bg)}
+body{font-family:Vazirmatn,Tahoma,"Segoe UI",sans-serif;color:#fff;background:radial-gradient(circle at 50% 0,#2a0f6b,#070722 65%) fixed;overflow-x:hidden;min-height:100vh}
+.floor{position:fixed;left:-50%;right:-50%;bottom:0;height:42vh;background:linear-gradient(var(--m) 2px,transparent 2px) 0 0/60px 60px,linear-gradient(90deg,var(--c) 2px,transparent 2px) 0 0/60px 60px;transform:perspective(260px) rotateX(62deg);transform-origin:bottom;opacity:.5;animation:fl 2s linear infinite;z-index:0}
+@keyframes fl{to{background-position:0 60px,0 0}}
+.wrap{position:relative;z-index:2;max-width:760px;margin:0 auto;padding:16px;perspective:900px}
+.scr{display:none;text-align:center}.scr.on{display:block;animation:in .5s}
+@keyframes in{from{opacity:0;transform:translateZ(-120px) rotateX(15deg)}}
+h1{font-size:clamp(30px,7vw,52px);margin:10px 0;color:#fff;text-shadow:0 0 8px var(--c),0 0 22px var(--c),0 0 44px var(--m)}
+.sub{color:var(--y);text-shadow:0 0 10px var(--y);font-size:19px;margin:4px 0 18px}
+.cube{width:70px;height:70px;margin:30px auto 20px;transform-style:preserve-3d;animation:rot 6s linear infinite}
+.cube i{position:absolute;inset:0;border:3px solid var(--c);box-shadow:0 0 14px var(--c),inset 0 0 14px var(--m);background:rgba(255,43,214,.12)}
+.cube i:nth-child(1){transform:translateZ(35px)}.cube i:nth-child(2){transform:rotateY(180deg) translateZ(35px)}
+.cube i:nth-child(3){transform:rotateY(90deg) translateZ(35px)}.cube i:nth-child(4){transform:rotateY(-90deg) translateZ(35px)}
+.cube i:nth-child(5){transform:rotateX(90deg) translateZ(35px)}.cube i:nth-child(6){transform:rotateX(-90deg) translateZ(35px)}
+@keyframes rot{to{transform:rotateX(360deg) rotateY(360deg)}}
+.card{background:rgba(15,10,60,.78);border:3px solid var(--c);border-radius:22px;padding:22px;box-shadow:0 0 22px var(--c),0 12px 0 #0a6a73,inset 0 0 22px rgba(0,240,255,.2);transform:rotateX(4deg)}
+input{width:100%;font:inherit;font-size:24px;text-align:center;padding:12px;border-radius:14px;border:3px solid var(--m);background:#12083d;color:#fff;box-shadow:0 0 14px var(--m);outline:0}
+.grp{margin:12px 0 20px;font-size:17px;color:var(--l);text-shadow:0 0 8px var(--l)}
+.btn{font:inherit;font-weight:700;font-size:24px;color:#10002b;background:linear-gradient(var(--y),var(--o));border:0;border-radius:16px;padding:12px 34px;cursor:pointer;box-shadow:0 8px 0 #a64b00,0 0 24px var(--y);transition:.12s}
+.btn:active{transform:translateY(7px);box-shadow:0 1px 0 #a64b00,0 0 24px var(--y)}
+.hud{display:flex;justify-content:space-between;align-items:center;gap:8px;font-size:19px;font-weight:700;margin-bottom:10px}
+.hud b{color:var(--y);text-shadow:0 0 10px var(--y)}
+.bar{height:12px;border-radius:9px;background:#1a1058;border:2px solid var(--c);margin-bottom:16px;overflow:hidden}
+.bar div{height:100%;width:0;background:linear-gradient(90deg,var(--m),var(--c),var(--l));box-shadow:0 0 14px var(--c);transition:.4s}
+.q{font-size:clamp(21px,4.6vw,30px);line-height:2.1;margin:6px 0 18px}
+.blank{display:inline-block;min-width:130px;padding:0 12px;border-bottom:4px dashed var(--y);color:var(--y);text-shadow:0 0 10px var(--y)}
+.blank.ok{color:var(--l);border-color:var(--l);text-shadow:0 0 12px var(--l)}
+.opts{display:grid;gap:14px;perspective:700px}
+.opt{font:inherit;font-weight:700;font-size:clamp(24px,5vw,32px);color:#fff;background:#1c0f66;border:3px solid var(--c);border-radius:16px;padding:12px;cursor:pointer;box-shadow:0 8px 0 #0a6a73,0 0 16px var(--c);transition:.15s}
+.opt:nth-child(2){border-color:var(--m);box-shadow:0 8px 0 #7a0f68,0 0 16px var(--m)}
+.opt:nth-child(3){border-color:var(--l);box-shadow:0 8px 0 #4d7a00,0 0 16px var(--l)}
+.opt:hover:not(:disabled){transform:translateZ(30px) rotateX(-8deg) translateY(-3px)}
+.opt:active:not(:disabled){transform:translateY(6px)}
+.opt.good{background:#0b7a2e;border-color:var(--l);box-shadow:0 0 30px var(--l)}
+.opt.bad{background:#8a0f2a;border-color:#ff3355;box-shadow:0 0 30px #ff3355;animation:sh .4s}
+@keyframes sh{25%{transform:translateX(-12px)}75%{transform:translateX(12px)}}
+.msg{min-height:34px;margin-top:14px;font-size:21px;font-weight:700}
+.big{font-size:clamp(56px,16vw,96px);color:var(--y);text-shadow:0 0 12px var(--y),0 0 40px var(--o);margin:4px 0}
+.stars{font-size:44px;letter-spacing:6px;filter:drop-shadow(0 0 10px var(--y))}
+.rank{font-size:26px;color:var(--c);text-shadow:0 0 12px var(--c);margin:6px 0 12px}
+.stat{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;margin:10px 0}
+.stat span{background:#12083d;border:2px solid var(--m);border-radius:12px;padding:6px 14px;font-size:18px}
+.rev{text-align:right;margin:14px 0;font-size:19px;line-height:2}.rev em{font-style:normal;color:var(--l)}
+.slots{display:flex;gap:7px;justify-content:center;flex-wrap:wrap;direction:rtl;margin:8px 0 20px}
+.slot{width:50px;height:58px;border:3px dashed var(--y);border-radius:12px;font-size:32px;line-height:50px;color:var(--l);text-shadow:0 0 10px var(--l)}
+.slot.f{border-style:solid;box-shadow:0 0 14px var(--y);background:#1c0f66}
+.tiles{display:flex;gap:11px;flex-wrap:wrap;justify-content:center;direction:rtl;perspective:700px}
+.tile{font:inherit;font-weight:700;font-size:32px;width:60px;height:66px;color:#fff;background:#1c0f66;border:3px solid var(--c);border-radius:14px;cursor:pointer;box-shadow:0 7px 0 #0a6a73,0 0 14px var(--c);transition:.15s}
+.tile:nth-child(3n+2){border-color:var(--m);box-shadow:0 7px 0 #7a0f68,0 0 14px var(--m)}
+.tile:nth-child(3n){border-color:var(--l);box-shadow:0 7px 0 #4d7a00,0 0 14px var(--l)}
+.tile:hover:not(:disabled){transform:translateZ(25px) rotateX(-10deg) translateY(-3px)}
+.tile:disabled{opacity:.22;transform:translateY(6px);box-shadow:none;cursor:default}
+.row{margin-top:18px;display:flex;gap:10px;justify-content:center}
+.btn.sm{font-size:17px;padding:8px 18px;box-shadow:0 5px 0 #a64b00,0 0 14px var(--y)}
+.tag{display:inline-block;font-size:16px;color:#10002b;background:var(--c);border-radius:20px;padding:2px 14px;margin-bottom:6px;box-shadow:0 0 12px var(--c)}
+canvas{position:fixed;inset:0;pointer-events:none;z-index:9}
+body.flash{animation:fr .5s}@keyframes fr{30%{box-shadow:inset 0 0 120px #ff1744}}
+</style></head><body>
+<div class="floor"></div><canvas id="cv"></canvas>
+<div class="wrap">
+
+<div class="scr on" id="s0">
+ <div class="cube"><i></i><i></i><i></i><i></i><i></i><i></i></div>
+ <h1>املای خلاق</h1>
+ <div class="sub">ماجرای خرس کوچولو و میکروب‌ها</div>
+ <div class="card">
+  <div style="font-size:21px;margin-bottom:10px">اسم قهرمان را بنویس:</div>
+  <input id="nm" maxlength="30" placeholder="نام و نام خانوادگی" autocomplete="off">
+  <div class="grp">گروه آموزشی پایه‌ی دوم دبستان پسرانه‌ی رشدنو مرکزی</div>
+  <button class="btn" id="go">شروع ماجراجویی 🚀</button>
+ </div>
+</div>
+
+<div class="scr" id="s1">
+ <div class="hud"><span id="pn"></span><span>امتیاز: <b id="sc">۰</b></span><span>🔥 <b id="cb">۰</b></span></div>
+ <div class="bar"><div id="pb"></div></div>
+ <div class="card">
+  <div class="q" id="q"></div>
+  <div class="tag" id="tg"></div><div class="slots" id="sl"></div><div class="tiles" id="tl"></div><div class="row" id="rw"><button class="btn sm" id="un">⌫ پاک کردن حرف آخر</button><button class="btn sm" id="rs2">↺ از نو</button></div>
+  <div class="opts" id="op"></div>
+  <div class="msg" id="mg"></div>
+ </div>
+</div>
+
+<div class="scr" id="s2">
+ <h1 id="en"></h1>
+ <div class="card">
+  <div>امتیاز نهایی تو</div>
+  <div class="big" id="fs"></div>
+  <div class="stars" id="st"></div>
+  <div class="rank" id="rk"></div>
+  <div class="stat"><span id="a1"></span><span id="a2"></span><span id="a3"></span></div>
+  <div class="rev" id="rv"></div>
+  <button class="btn" id="again">بازی دوباره 🔄</button>
+ </div>
+</div>
+
+</div>
+<script>
+const Z="\u200c",$=i=>document.getElementById(i);
+const fa=n=>String(n).replace(/\d/g,d=>"۰۱۲۳۴۵۶۷۸۹"[d]);
+const S=[
+["خرس کوچولو می‌خواست با ___ها بجنگد.","میکروب"],
+["میکروب‌ها ___ خطرناکی هستند.","موجودات"],
+["خرس کوچولو بی‌___ بود.","حوصله"],
+["خرس کوچولو ___ شد و به راه افتاد.","ناراحت"],
+["او ___ گرفت با میکروب‌ها بجنگد.","تصمیم"],
+["من می‌خواهم با میکروب‌ها ___.","بجنگم"],
+["همیشه خودت را ___ نگه دار.","پاکیزه"],
+["اگر خودت را پاکیزه ___، بیمار نمی‌شوی.","نگه داری"],
+["او خسته و ___ زیر درختی نشست.","گرسنه"],
+["در راه به یک بچه‌ی ___ رسید.","گنجشک"],
+["یک روز ___ چوبی برداشت و به راه افتاد.","صبح زود"]];
+const C=[
+["میکروب‌ها موجوداتی ___ هستند.","خطرناک","خترناک","خطرناغ"],
+["خسته شد و نشست تا ___ کند.","استراحت","استراهت","استراحط"],
+["او ___ را با دست‌های کثیفش خورد.","عسل","اسل","عصل"],
+["دست‌هایت را قبل از ___ خوردن بشوی.","غذا","غزا","قذا"],
+["روز بعد، خرس کوچولو ___ شد.","بیمار","بیماز","بیمال"]];
+const M=[["کثیف","ث","س","ص"],["کندو","ن","ت","پ"],["خوش"+Z+"حال","ح","ه","خ"],["حالا","ح","ه","ج"],["خسته","س","ص","ث"]];
+const ITEMS=[].concat(S.map(x=>({t:"s",h:x[0],w:x[1]})),C.map(x=>({t:"c",q:x})),M.map(x=>({t:"m",w:x[0],l:x[1],o:[x[1],x[2],x[3]]})));
+const GOOD=["آفرین! درست بود 🎉","عالی بود قهرمان! ⚡","دمت گرم! 🔥","چه املایی! 🚀","فوق‌العاده‌ای! 🌟"];
+let order,i,score,combo,right,best,wrongs,lock,name,it,tiles,cur,tries;
+const sh=a=>{a=a.slice();for(let k=a.length-1;k>0;k--){const j=Math.random()*(k+1)|0;[a[k],a[j]]=[a[j],a[k]]}return a};
+const show=n=>{document.querySelectorAll(".scr").forEach((e,k)=>e.classList.toggle("on",k==n))};
+// صدا
+let ac;const beep=(f,t,d,ty="sine",v=.15)=>{try{ac=ac||new (window.AudioContext||window.webkitAudioContext)();const o=ac.createOscillator(),g=ac.createGain();o.type=ty;o.frequency.value=f;g.gain.setValueAtTime(v,ac.currentTime+t);g.gain.exponentialRampToValueAtTime(.001,ac.currentTime+t+d);o.connect(g);g.connect(ac.destination);o.start(ac.currentTime+t);o.stop(ac.currentTime+t+d)}catch(e){}};
+const sOk=()=>[523,659,784,1047].forEach((f,k)=>beep(f,k*.09,.2));
+const sNo=()=>{beep(180,0,.3,"sawtooth");beep(130,.15,.35,"sawtooth")};
+// کاغذرنگی
+const cv=$("cv"),cx=cv.getContext("2d");let P=[];
+const rs=()=>{cv.width=innerWidth;cv.height=innerHeight};rs();addEventListener("resize",rs);
+function boom(n=110){const C=["#00f0ff","#ff2bd6","#a6ff00","#ffe600","#ff7a00"];for(let k=0;k<n;k++)P.push({x:innerWidth/2,y:innerHeight/2,vx:(Math.random()-.5)*16,vy:Math.random()*-14-3,s:Math.random()*8+4,c:C[k%5],r:Math.random()*6,l:90});if(P.length==n)tick()}
+function tick(){cx.clearRect(0,0,cv.width,cv.height);P=P.filter(p=>p.l>0);P.forEach(p=>{p.x+=p.vx;p.y+=p.vy;p.vy+=.45;p.r+=.3;p.l--;cx.save();cx.translate(p.x,p.y);cx.rotate(p.r);cx.fillStyle=p.c;cx.shadowColor=p.c;cx.shadowBlur=8;cx.fillRect(-p.s/2,-p.s/4,p.s,p.s/2);cx.restore()});if(P.length)requestAnimationFrame(tick)}
+// بازی
+const hint=h=>h.replace("___",'<span class="blank" id="bl">؟؟؟</span>');
+function start(){name=$("nm").value.trim();if(!name){$("nm").focus();$("nm").style.borderColor="#f33";return}
+ order=sh(ITEMS);i=0;score=0;combo=0;right=0;best=0;wrongs=[];show(1);load()}
+function hud(){$("sc").textContent=fa(score);$("cb").textContent=fa(combo)}
+function load(){lock=false;it=order[i];$("pn").textContent="سوال "+fa(i+1)+" از "+fa(order.length);$("pb").style.width=(i/order.length*100)+"%";hud();$("mg").textContent="";
+ const sc=it.t==="s";["sl","tl","rw"].forEach(x=>$(x).style.display=sc?"":"none");$("op").style.display=sc?"none":"";
+ if(sc){$("tg").textContent="🧩 حرف‌ها را به ترتیب انتخاب کن";$("q").innerHTML=hint(it.h);
+  const L=[...it.w.replace(/[\s\u200c]/g,"")];tries=0;cur=[];
+  do{tiles=sh(L)}while(L.length>1&&tiles.join("")===L.join(""));drawS()}
+ else if(it.t==="c"){$("tg").textContent="✅ املای درست را پیدا کن";$("q").innerHTML=hint(it.q[0]);opts(it.q.slice(1),it.q[1])}
+ else{$("tg").textContent="🔍 حرف گمشده را پیدا کن";$("q").innerHTML='حرف گمشده‌ی این کلمه چیست؟<br><span class="blank" id="bl" style="font-size:1.3em">'+it.w.replace(it.l,"▢")+'</span>';opts(it.o,it.l)}}
+function opts(a,ok){$("op").innerHTML="";sh(a).forEach(w=>{const b=document.createElement("button");b.className="opt";b.textContent=w;b.onclick=()=>pick(b,w===ok,ok);$("op").appendChild(b)})}
+function drawS(){const n=tiles.length;$("sl").innerHTML=tiles.map((_,k)=>'<div class="slot'+(cur[k]!=null?' f':'')+'">'+(cur[k]!=null?tiles[cur[k]]:"")+'</div>').join("");
+ $("tl").innerHTML="";tiles.forEach((l,k)=>{const b=document.createElement("button");b.className="tile";b.textContent=l;b.disabled=cur.includes(k)||lock;b.onclick=()=>{cur.push(k);drawS();if(cur.length===n)chk()};$("tl").appendChild(b)})}
+$("un").onclick=()=>{if(!lock){cur.pop();drawS()}};$("rs2").onclick=()=>{if(!lock){cur=[];drawS()}};
+function chk(){const ok=cur.map(k=>tiles[k]).join("")===it.w.replace(/[\s\u200c]/g,"");
+ if(ok){lock=true;drawS();const p=tries?8:15;win(p,it.w)}
+ else{tries++;score=Math.max(0,score-3);combo=0;hud();sNo();bad();
+  if(tries<2){$("mg").style.color="#ff6b81";$("mg").textContent="نشد! یک بار دیگر امتحان کن (−۳)";setTimeout(()=>{cur=[];drawS()},700)}
+  else{lock=true;wrongs.push(it.w);cur=[];drawS();const bl=$("bl");bl.textContent=it.w;bl.classList.add("ok");$("mg").style.color="#ff6b81";$("mg").textContent="کلمه‌ی درست: "+it.w;next(2400)}}}
+function bad(){document.body.classList.add("flash");setTimeout(()=>document.body.classList.remove("flash"),500)}
+function win(p,w){score+=p;combo++;right++;best=Math.max(best,combo);hud();sOk();boom();const bl=$("bl");bl.textContent=w;bl.classList.add("ok");$("mg").style.color="var(--l)";$("mg").textContent=GOOD[Math.random()*GOOD.length|0]+" (+"+fa(p)+")";next(1400)}
+function pick(b,ok,right_){if(lock)return;lock=true;
+ document.querySelectorAll(".opt").forEach(x=>{x.disabled=true;if(x.textContent===right_)x.classList.add("good")});
+ const full=it.t==="c"?it.q[1]:it.w;
+ if(ok)win(10,full);
+ else{b.classList.add("bad");score=Math.max(0,score-5);combo=0;hud();wrongs.push(full);sNo();bad();const bl=$("bl");bl.textContent=full;bl.classList.add("ok");$("mg").style.color="#ff6b81";$("mg").textContent="املای درست: "+full+" (−۵)";next(2400)}}
+function next(ms){setTimeout(()=>{i++;i<order.length?load():end()},ms)}
+function end(){show(2);$("en").textContent="آفرین "+name+"!";$("fs").textContent=fa(score);
+ const p=right/order.length,s=p>=.9?5:p>=.75?4:p>=.55?3:p>=.35?2:1;
+ $("st").textContent="★".repeat(s)+"☆".repeat(5-s);
+ $("rk").textContent=["مبتدی ماجراجو","شاگرد شجاع","املانویس ماهر","قهرمان املا","ستاره‌ی املای نئونی"][s-1];
+ $("a1").textContent="درست: "+fa(right)+" از "+fa(order.length);$("a2").textContent="بهترین پشت‌سرهم: "+fa(best);$("a3").textContent="درصد: "+fa(Math.round(p*100))+"٪";
+ $("rv").innerHTML=wrongs.length?"<b>املای این کلمه‌ها را دوباره تمرین کن:</b><br><em>"+[...new Set(wrongs)].join("، ")+"</em>":"همه‌ی کلمه‌ها را درست نوشتی! بدون هیچ غلطی 👏";
+ sOk();boom(220);setTimeout(()=>boom(160),600)}
+$("go").onclick=start;$("again").onclick=()=>{$("nm").value=name;show(0)};
+$("nm").addEventListener("keydown",e=>{if(e.key==="Enter")start()});
+</script></body></html>
